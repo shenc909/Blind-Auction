@@ -62,17 +62,17 @@ contract('BlindAuction', ([deployer, bidder1, bidder2, bidder3]) => {
       assert.equal(url, deployURL)
     })
 
-    it('should have DNS Manager Address', async() => {
+    it('should have DNS Manager Address', async () => {
       const dnsManager = await blindAuction.dnsManagerAddress()
       assert.equal(dns.address, dnsManager)
     })
-    
-    it('should have default winner', async() => {
+
+    it('should have default winner', async () => {
       const highestBidder = await blindAuction.highestBidder()
       assert.equal(deployer, highestBidder, "Default Highest bidder should be auction starter")
     })
 
-    it('should have default highest bid', async() => {
+    it('should have default highest bid', async () => {
       const highestBid = await blindAuction.highestBid()
       assert.equal(0, highestBid, "Default Highest bid should be 0")
     })
@@ -90,7 +90,7 @@ contract('BlindAuction', ([deployer, bidder1, bidder2, bidder3]) => {
       const revealEnd = BigNumber(await blindAuction.revealEnd())
       const revealTime = revealEnd.c[0]
       // check that reveal end above current time
-      assert.isAbove(revealTime, Math.floor(Date.now()/ 1000))
+      assert.isAbove(revealTime, Math.floor(Date.now() / 1000))
       // check that reveal end is above bidding end
       assert.isAbove(revealTime, biddingTime)
     })
@@ -111,7 +111,7 @@ contract('BlindAuction', ([deployer, bidder1, bidder2, bidder3]) => {
       const hashBid = soliditySha3(
         toWei("0.1"), // hash need to change to wei
         true,
-        fromAscii("secret").padEnd(66, 0) 
+        fromAscii("secret").padEnd(66, 0)
       );
       const bid = await blindAuction.bid(hashBid, { from: bidder1, value: toWei("0.1") })
       const bidEvent = bid.logs[0].args
@@ -191,19 +191,19 @@ contract('BlindAuction', ([deployer, bidder1, bidder2, bidder3]) => {
     let hashBid1
     let hashBid2
     let hashBid3
-    
+
     let bid1
     let bid2
     let bid3
 
     let revealBidder1
-    let revealBidder2 
+    let revealBidder2
 
     let bidder1Balance
     let bidder2Balance
 
     let auctionEnd
-    
+
     before(async () => {
       // deploy DNS contract and auction contract
       dns = await Dns.deployed(); // get the deployed Dns contract
@@ -211,8 +211,6 @@ contract('BlindAuction', ([deployer, bidder1, bidder2, bidder3]) => {
       const deployBlindAuction = await dns.startAuction(deployURL)
       const deployEvent = deployBlindAuction.logs[0].args
       auctionAddress = deployEvent._auction_addr
-      // TODO: START TEST WITH ADDRESSS FROM CREATED IN DNS CONTRACT
-      // blindAuction = await BlindAuction.new(10, 10, deployURL, dns.address, deployer)
       blindAuction = await BlindAuction.at(auctionAddress)
       // use URL below for keccak256 hash in JS
       // https://blog.8bitzen.com/posts/18-03-2019-keccak-abi-encodepacked-with-javascript/
@@ -222,7 +220,7 @@ contract('BlindAuction', ([deployer, bidder1, bidder2, bidder3]) => {
       hashBid1 = soliditySha3(
         toWei("0.1"), // hash need to change to wei
         true,
-        fromAscii("secret").padEnd(66, 0) 
+        fromAscii("secret").padEnd(66, 0)
       );
       hashBid2 = soliditySha3(
         toWei("0.2"), // hash need to change to Wei
@@ -265,7 +263,7 @@ contract('BlindAuction', ([deployer, bidder1, bidder2, bidder3]) => {
       await blindAuction.bid(hashBid3, { from: bidder3, value: toWei("0.05") }).should.be.rejected
       // reveal should be rejected as pass reveal time
       await blindAuction.reveal([toWei("0.2"), toWei("0.05")], [true, false], [fromAscii("secret"), fromAscii("secret")], { from: bidder2 }).should.be.rejected
-      
+
       bidder1Balance = await web3.eth.getBalance(bidder1)
       bidder2Balance = await web3.eth.getBalance(bidder2)
       auctionEnd = await blindAuction.auctionEnd()
@@ -316,7 +314,7 @@ contract('BlindAuction', ([deployer, bidder1, bidder2, bidder3]) => {
       // check if URL is registered in dns contract
       const urlAddress = await dns.getRegisteredURL(deployURL)
       assert.equal(event.winner, urlAddress, "Address of winner should be registered as owner in DNS manager")
-      
+
       // ensure refund is actually given to users by checking their accounts
       const bidder1BalanceNow = await web3.eth.getBalance(bidder1) - toWei("0.1")
       const bidder2BalanceNow = await web3.eth.getBalance(bidder2) - toWei("0.05")
@@ -333,7 +331,7 @@ contract('BlindAuction', ([deployer, bidder1, bidder2, bidder3]) => {
 
     let hashBid1
     let hashBid2
-    
+
     let bid1
     let bid2
 
@@ -352,13 +350,11 @@ contract('BlindAuction', ([deployer, bidder1, bidder2, bidder3]) => {
       const deployBlindAuction = await dns.startAuction(deployURL)
       const deployEvent = deployBlindAuction.logs[0].args
       auctionAddress = deployEvent._auction_addr
-      // TODO: START TEST WITH ADDRESSS FROM CREATED IN DNS CONTRACT
-      // blindAuction = await BlindAuction.new(10, 10, deployURL, dns.address, deployer)
       blindAuction = await BlindAuction.at(auctionAddress)
       hashBid1 = soliditySha3(
         toWei("0.1"), // hash need to change to wei
         true,
-        fromAscii("secret").padEnd(66, 0) 
+        fromAscii("secret").padEnd(66, 0)
       );
       hashBid2 = soliditySha3(
         toWei("0.2"), // hash need to change to Wei

@@ -6,6 +6,8 @@ import {
     startAuction,
 } from "./dns.js"
 
+import { ENVIRONMENT } from './configurations';
+
 import NotExpired from './components/NotExpired';
 import ExpiredNoAuction from "./components/ExpiredNoAuction.js";
 import ExpiredHasAuction from "./components/ExpiredHasAuction.js";
@@ -193,8 +195,8 @@ class AuctionStatus extends React.Component {
                     <img style={{ width: "100px" }} src={require('./assets/house.png')} />
 
                     <h1 >The Auction House</h1>
-                    <p style={{ width: "45%", margin: "auto", fontSize: "18px", marginBottom: "20px" }} >
-                        Welcome to the Auction House, powered by the <b>Ethereum</b> blockchain!
+                    <p style={{ width: "80%", margin: "auto", fontSize: "18px", marginBottom: "20px" }} >
+                        Welcome to the Auction House, powered by the <b>Ethereum</b> blockchain on the <b>{ENVIRONMENT.toUpperCase() === 'GANACHE' ? 'Local Ganache' : ENVIRONMENT.toUpperCase() === 'ROPSTEN' ? ' Ropsten' : ENVIRONMENT.toUpperCase() === 'GOERLI' ? ' Goerli' : 'undefined'}</b> network!
                         {/* <br /><br /> */}
                         {/* You have selected the domain: {this.state.domainName}<br /> */}
                         <br /><br />

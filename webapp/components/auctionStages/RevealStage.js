@@ -170,6 +170,12 @@ class RevealStage extends React.Component {
                             <b>List of Bids:</b> 0.1, 0.2<br />
                             <b>List of Real Booleans:</b> true, false<br />
                             <b>List of Secrets:</b> secret1, secret 2<br />
+
+                            <br /><br />
+                            <hr />
+                            <br /><br />
+                            Find out more about how the <b>Reveal Phase</b> works and why it is necessary <a href="https://github.com/zhiqisim/Blind-Auction/blob/master/README.md#232-reveal-phase">over here</a>!
+
                         </p>
                     </div>
 

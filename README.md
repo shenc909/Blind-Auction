@@ -53,6 +53,8 @@ To use the DNS Blind Auction House, you will first need to clone the repository 
 git clone https://github.com/zhiqisim/Blind-Auction.git
 ```
 
+or you may use the submission zip file that we submitted.
+
 We will be utilising the `Migrations.sol`, `Dns.sol` and `BlindAuction.sol` Solidity files for our smart contracts.
 
 We can compile the contracts with the following command:

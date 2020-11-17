@@ -1,5 +1,7 @@
 import React from "react";
 
+import { ENVIRONMENT } from './configurations';
+
 
 // example from doc: https://reactjs.org/docs/forms.html#controlled-components
 class AuctionPage extends React.Component {
@@ -87,8 +89,8 @@ class AuctionPage extends React.Component {
                     <img style={{ width: "100px" }} src={require('./assets/house.png')} />
 
                     <h1 >The Auction House</h1>
-                    <p style={{ width: "45%", margin: "auto", fontSize: "18px", marginBottom: "20px" }} >
-                        Welcome to the Auction House, powered by the <b>Ethereum</b> blockchain!
+                    <p style={{ width: "80%", margin: "auto", fontSize: "18px", marginBottom: "20px" }} >
+                        Welcome to the Auction House, powered by the <b>Ethereum</b> blockchain on the <b>{ENVIRONMENT.toUpperCase() === 'GANACHE' ? 'Local Ganache' : ENVIRONMENT.toUpperCase() === 'ROPSTEN' ? ' Ropsten' : ENVIRONMENT.toUpperCase() === 'GOERLI' ? ' Goerli' : 'undefined'}</b> network!
                         <br /><br />
                         <input style={{ margin: "5px" }} type="submit" value="Back to Home Page" onClick={this.handleBack} />
                     </p>

@@ -96,6 +96,11 @@ class EndStage extends React.Component {
                         <hr />
                         <br /><br />
                         <b>Thank you for taking part in the DNS Blind Auction!</b>
+
+                        <br /><br />
+                        <hr />
+                        <br /><br />
+                        Find out more about how the <b>End Phase</b> works and why it is necessary <a href="https://github.com/zhiqisim/Blind-Auction/blob/master/README.md#233-end-phase">over here</a>!
                     </p>
                 </div>
                 <div style={{ ...innerCardStyle, flex: 2, paddingTop: "80px" }}>

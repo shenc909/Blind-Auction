@@ -1,6 +1,6 @@
 // Only Change the following constants:
-export const ENVIRONMENT = 'ropsten'; // GANACHE, ROPSTEN, or GOERLI
-export const DnsContractAddressGanache = '0xA59960d719799a9D45566f5b068EfB2a75F06611';
+export const ENVIRONMENT = 'ganache'; // GANACHE, ROPSTEN, or GOERLI : Please ensure you spell it correctly!
+export const DnsContractAddressGanache = '0xDB2846AcbB58c66BB0D9b145c31EfEC792c2dbD2';
 
 // Do not change the following Contract Addresses 
 // UNLESS you are re-migrating the contracts onto the Test Net

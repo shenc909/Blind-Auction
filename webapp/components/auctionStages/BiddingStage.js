@@ -148,6 +148,10 @@ class BiddingStage extends React.Component {
                             <hr />
                             <br /><br />
                             <b>Important:</b> Please remember all your (bid, real, secret) inputs in chronological order, as you will need these values in the reveal stage later. Failure to properly safe-keep these values will result in you losing your bid.
+                            <br /><br />
+                            <hr />
+                            <br /><br />
+                            Find out more about how the <b>Bidding Phase</b> works and why it is necessary <a href="https://github.com/zhiqisim/Blind-Auction/blob/master/README.md#231-bidding-phase">over here</a>!
 
                             {/* - Tell user that they can place multiple bids
                             - eth of bid does not need to correpond with bid hash amount

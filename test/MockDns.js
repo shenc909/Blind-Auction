@@ -40,8 +40,6 @@ contract("MockDns", async (accounts) => {
     // accounts are the list of account created by the Truffle (i.e. 10 key pair)
     // by default, the first account will deploy the contract
     it("should make deployer the owner", async () => {
-
-      console.log(dns.address);
       let owner = await dns.owner(); // call the getter on public state variable, https://solidity.readthedocs.io/en/v0.7.1/contracts.html#getter-functions
       assert.equal(owner, accounts[0]); // compare the expected owner with the actual owner
     });
